@@ -43,7 +43,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="min-h-screen py-24 bg-gray-50 dark:bg-neutral-900 transition-colors duration-500 overflow-hidden">
+    <section id="contact" className="min-h-screen py-24 overflow-hidden">
       <div className="container mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -95,7 +95,7 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <div className="text-xs font-black uppercase tracking-widest text-gray-400 dark:text-neutral-500 mb-1 underline decoration-brand/50 transition-colors">Location</div>
-                    <div className="text-sm font-bold uppercase text-black dark:text-white transition-colors">Salem, Tamil Nadu, India</div>
+                    <div className="text-sm font-bold uppercase text-black dark:text-white transition-colors">{data.personal.location}</div>
                   </div>
                 </div>
               </div>
@@ -166,7 +166,7 @@ const Contact: React.FC = () => {
       </div>
 
       <div className="mt-24 text-center pb-12">
-        <p className="text-[10px] font-black uppercase tracking-widest text-gray-300 dark:text-neutral-600 transition-colors">© 2024 LIVISH KUMAR. ALL RIGHTS RESERVED.</p>
+        <p className="text-[10px] font-black uppercase tracking-widest text-gray-300 dark:text-neutral-600 transition-colors">© 2026 LIVISH KUMAR. ALL RIGHTS RESERVED.</p>
       </div>
     </section>
   );

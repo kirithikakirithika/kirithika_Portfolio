@@ -1,76 +1,111 @@
 export const data = {
   personal: {
-    name: "LIVISH KUMAR",
-    role: "Backend Software Engineer",
-    email: "livishkumarlk83@gmail.com",
-    phone: "+919363254736",
-    github: "http://github.com/livishkumar",
-    linkedin: "http://www.linkedin.com/in/livishkumar53716728a",
-    location: "India",
-    summary: "Backend Software Engineer with expertise in architecting scalable enterprise systems using Java, Python, and Spring Boot. Highly skilled in Microservices architecture, Lead Full Stack development, and high-performance API design. Proven track record in optimizing system performance by 60% and managing cloud infrastructure on AWS and Docker to achieve high availability.",
+    name: "KIRITHIKA R S",
+    role: "Full Stack Developer",
+    tagline: "Full Stack Developer building secure REST APIs and responsive interfaces with Java, Spring Boot, and React.js.",
+    email: "kirithikakirithika4@gmail.com",
+    phone: "+918508608612",
+    github: "https://github.com/kirithikakirithika",
+    linkedin: "https://www.linkedin.com/in/kirithika-kirithika-653064260/",
+    location: "Dharmapuri, Tamil Nadu, India",
+    summary: "Computer Science graduate and Full Stack Developer with hands-on experience in Java, Spring Boot, REST APIs, Hibernate/JPA, MySQL, React.js, and JavaScript. Experienced in developing full-stack applications, designing RESTful APIs, implementing Spring Security, JWT authentication, and role-based access control, and testing web applications. Currently working as a Full Stack Developer Intern at Scalabox Technologies, contributing to CRM and billing applications, application testing, and UI design using Figma. Seeking an entry-level Java Full Stack Developer opportunity.",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop", // Fallback image
     sidebarImage: "./sidebar-profile.jpg", // Image for the sidebar
     homeImage: "./profile.jpg",    // Image for the home page (you can change this to another file)
-    resumeUrl: "/livish_cv.pdf",
+    resumeUrl: "kirithika.pdf",
   },
   skills: {
-    languages: ["Java", "Python", "JavaScript", "TypeScript"],
-    backend: ["Spring Boot", "RESTful APIs", "Microservices", "JPA/Hibernate", "JWT Authentication"],
-    frontend: ["React", "Tailwind CSS", "HTML", "CSS"],
-    databases: ["PostgreSQL", "Neo4j", "Apache Solr"],
-    cloud: ["AWS (EC2, S3)", "Docker", "Linux", "CI/CD Pipelines (Jenkins/GitHub Actions)", "Git"],
-    tools: ["Postman", "Swagger (OpenAPI)", "IntelliJ IDEA", "VS Code", "Figma"]
+    languages: ["Java", "JavaScript", "SQL", "Python", "HTML5", "CSS3"],
+    backend: ["Spring Boot", "REST APIs", "Hibernate", "JPA", "JDBC", "Servlets", "Flask"],
+    frontend: ["React.js", "HTML5", "CSS3", "JavaScript"],
+    database: ["MySQL", "PostgreSQL"],
+    security: ["Spring Security", "JWT Authentication", "Role-Based Access Control (RBAC)"],
+    uiuxTesting: ["Figma", "UI Design", "Web Application Testing", "Postman"],
+    tools: ["Git", "VS Code", "Eclipse", "pgAdmin"]
   },
   experience: [
     {
-      company: "Nectar IT",
-      role: "Junior Java Developer",
-      period: "June 2025 – Present",
+      company: "Scalabox Technologies, Dharmapuri",
+      role: "Full Stack Developer Intern",
+      period: "2026 – Present",
       tasks: [
-        "Architected and maintained scalable backend services using Java and Spring Boot for enterprise-level applications.",
-        "Designed and integrated secure RESTful APIs, implementing JWT-based authentication and role-based access control (RBAC).",
-        "Configured and deployed applications on AWS EC2 and managed cloud storage using AWS S3.",
-        "Streamlined development workflows by supporting CI/CD pipelines for automated build and deployment processes.",
-        "Optimized data retrieval and search efficiency by utilizing Apache Solr and PostgreSQL.",
-        "Collaborated on debugging and resolving software defects to enhance overall application performance and reliability."
+        "Contributing to the development and testing of CRM and billing applications, supporting application workflows and feature validation.",
+        "Designed the Leads Management page for the CRM application using Figma, focusing on structured information hierarchy, usability, and user-friendly interface design.",
+        "Performed web application testing for CRM and billing modules, identifying functional issues and validating application workflows before delivery."
+      ]
+    },
+    {
+      company: "Emglitz Technologies, Salem",
+      role: "Java Developer Intern",
+      period: "2024",
+      tasks: [
+        "Developed Core Java applications including a functional ATM system with JDBC-based transaction processing, account balance management, and secure PIN validation."
+      ]
+    },
+    {
+      company: "Imagecon, Salem",
+      role: "Python Developer Intern",
+      period: "2023",
+      tasks: [
+        "Developed Python-based mini-projects and automation scripts, strengthening Python programming, application development, and problem-solving skills."
       ]
     }
   ],
   projects: [
     {
-      title: "Job-Day Enterprise HR Management System",
+      title: "Full-Stack Banking System",
       role: "Full Stack Developer",
+      tags: ["Backend", "UI/UX", "Database", "Security"],
       highlights: [
-        "Architected and built a comprehensive HR platform utilizing 18 Spring Boot microservices and a React frontend, serving over 10,000 users.",
-        "Implemented robust JWT authentication, PostgreSQL databases, and Docker-based deployment, achieving 99.9% system uptime.",
-        "Led a cross-functional development team, optimizing overall system performance by 60%.",
-        "Reduced deployment time from 4 hours to 15 minutes by automating CI/CD pipelines."
+        "Developed a full-stack banking application using Spring Boot and React.js with account creation, deposits, withdrawals, fund transfers, and balance inquiry.",
+        "Designed and tested 15+ RESTful APIs for account management and transaction processing; validated APIs using Postman.",
+        "Implemented Spring Security, JWT authentication, and role-based access control for Admin and Customer users.",
+        "Integrated MySQL with Hibernate/JPA for persistent storage of customer records and transaction history."
       ],
-      github: "http://github.com/livishkumar", // Add your link here
-      live: "https://example.com"             // Add your live link here
+      github: "",
+      live: ""
     },
     {
-      title: "Computer Inventory Management System",
-      role: "Full-Stack Developer",
+      title: "Smart Stroke Risk Predictor",
+      role: "ML Web App Developer",
+      tags: ["Machine Learning", "Data Prep", "Flask API", "Model Evaluation"],
       highlights: [
-        "Built a full-stack application to track and manage organizational IT assets efficiently.",
-        "Developed a responsive user interface using React and Tailwind CSS for seamless asset tracking.",
-        "Created backend services with Spring Boot and PostgreSQL, incorporating role-based access control."
+        "Developed a machine-learning web application using Random Forest and Logistic Regression to predict stroke risk from clinical patient data.",
+        "Performed data preprocessing, missing-value handling, SMOTE-based class balancing, and feature scaling; evaluated models using Accuracy, Precision, Recall, F1-Score, and AUC-ROC.",
+        "Deployed the selected machine-learning model through a Flask web application and presented the research at ICETS '25."
       ],
-      github: "https://github.com/LIVISHKUMAR/computer-inventory-system", // Add your link here
-      live: "https://example.com"             // Add your live link here
+      github: "",
+      live: ""
     }
   ],
   education: [
     {
-      school: "RP Sarathy Institute of Technology Model School",
-      degree: "Bachelor of Computer Science Engineering",
+      school: "RP Sarathy Institute of Technology",
+      degree: "B.E. Computer Science and Engineering",
       period: "2021 – 2025",
-      grade: "CGPA: 7.5 / 10.0"
+      grade: "CGPA: 7.91 / 10"
+    }
+  ],
+  certifications: [
+    {
+      title: "Full Stack Java Development",
+      issuer: "JSpiders (QSpiders)",
+      details: "Core Java, Advanced Java, JDBC, Servlets, OOP, HTML/CSS/JavaScript, React.js, SQL/MySQL, and REST APIs"
+    },
+    {
+      title: "Web App Development Workshop",
+      issuer: "Global iGate IT Training Center",
+      details: "2023"
+    },
+    {
+      title: "Employability Skills Development Training Programme",
+      issuer: "Titan Leap, Naandi Foundation",
+      details: "2023 – 2024"
     }
   ],
   languages: [
     { name: "Tamil", proficiency: "Native" },
+    { name: "Telugu", proficiency: "Native" },
     { name: "English", proficiency: "Professional Working Proficiency" }
   ]
 };

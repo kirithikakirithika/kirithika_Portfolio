@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from 'react';
+
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+
 import Sidebar from './components/Sidebar';
+import Galaxy from './components/Galaxy';
 import Home from './components/Home';
 import About from './components/About';
 import Resume from './components/Resume';
@@ -9,33 +12,43 @@ import Contact from './components/Contact';
 
 export function App() {
   const [activeSection, setActiveSection] = useState('home');
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    const saved = localStorage.getItem('isDarkMode');
-    return saved ? JSON.parse(saved) : false;
-  });
 
+  // Permanently enable dark theme
   useEffect(() => {
-    localStorage.setItem('isDarkMode', JSON.stringify(isDarkMode));
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [isDarkMode]);
+    document.documentElement.classList.add('dark');
 
+    return () => {
+      document.documentElement.classList.remove('dark');
+    };
+  }, []);
+
+  // Track active section while scrolling
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'resume', 'portfolio', 'contact'];
+      const sections = [
+        'home',
+        'about',
+        'resume',
+        'portfolio',
+        'contact'
+      ];
+
       const scrollPosition = window.scrollY + 200;
 
       for (const section of sections) {
         const element = document.getElementById(section);
-        if (element) {
-          const { top, bottom } = element.getBoundingClientRect();
-          const elementTop = top + window.scrollY;
-          const elementBottom = bottom + window.scrollY;
 
-          if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
+        if (element) {
+          const elementTop =
+            element.getBoundingClientRect().top + window.scrollY;
+
+          const elementBottom =
+            element.getBoundingClientRect().bottom + window.scrollY;
+
+          if (
+            scrollPosition >= elementTop &&
+            scrollPosition < elementBottom
+          ) {
             setActiveSection(section);
             break;
           }
@@ -44,33 +57,63 @@ export function App() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
+  // Smooth navigation
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
+
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({
+        behavior: 'smooth'
+      });
+
       setActiveSection(sectionId);
     }
   };
 
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-  };
-
   return (
-    <div className={`flex min-h-screen font-sans transition-colors duration-500 ${isDarkMode ? 'bg-black text-white' : 'bg-white text-black'}`}>
-      {/* Fixed Sidebar */}
+    <div className="relative flex min-h-screen font-sans bg-black text-white">
+
+      {/* GALAXY BACKGROUND */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <Galaxy
+          density={1.2}
+          glowIntensity={1.1}
+          flareIntensity={0.8}
+          starSize={1}
+          opacity={1}
+          starSpeed={0.5}
+          mouseRepulsion
+          clickWarp
+          starColors={[]}
+          hueShift={140}
+          saturation={0}
+          twinkleIntensity={0.3}
+          speed={1}
+          rotationSpeed={0.1}
+          layers={4}
+          direction="forward"
+          repulsionStrength={2}
+          mouseInteraction
+          intro
+          lightMode={false}
+        />
+      </div>
+
+      {/* FIXED SIDEBAR */}
       <Sidebar
         activeSection={activeSection}
         setActiveSection={scrollToSection}
-        isDarkMode={isDarkMode}
-        toggleDarkMode={toggleDarkMode}
       />
 
-      {/* Main Content */}
-      <main className={`lg:ml-64 flex-grow transition-colors duration-500 ${isDarkMode ? 'bg-neutral-900' : 'bg-gray-50'}`}>
+      {/* MAIN CONTENT */}
+      <main className="lg:ml-64 relative z-10 flex-grow">
         <AnimatePresence mode="wait">
           <motion.div
             key="content"
@@ -88,10 +131,11 @@ export function App() {
         </AnimatePresence>
       </main>
 
-      {/* Floating Action Buttons or Decorative Elements */}
+      {/* SCROLL PROGRESS INDICATOR */}
       <div className="fixed right-10 bottom-10 z-50 hidden lg:flex flex-col gap-4">
+
         <motion.div
-          className={`w-1 h-24 relative overflow-hidden ${isDarkMode ? 'bg-neutral-800' : 'bg-gray-200'}`}
+          className="w-1 h-24 relative overflow-hidden bg-neutral-800"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
@@ -99,17 +143,24 @@ export function App() {
             className="absolute top-0 left-0 w-full bg-brand"
             style={{
               height: '100%',
-              scaleY: activeSection === 'home' ? 0.2 :
+              scaleY:
+                activeSection === 'home' ? 0.2 :
                 activeSection === 'about' ? 0.4 :
-                  activeSection === 'resume' ? 0.6 :
-                    activeSection === 'portfolio' ? 0.8 : 1
+                activeSection === 'resume' ? 0.6 :
+                activeSection === 'portfolio' ? 0.8 : 1
             }}
-            transition={{ type: "spring", stiffness: 100 }}
+            transition={{
+              type: 'spring',
+              stiffness: 100
+            }}
           />
         </motion.div>
-        <span className={`[writing-mode:vertical-rl] text-[10px] font-black uppercase tracking-widest ${isDarkMode ? 'text-neutral-500' : 'text-gray-400'}`}>
+
+        <span className="text-neutral-500 [writing-mode:vertical-rl] text-[10px] font-black uppercase tracking-widest">
         </span>
+
       </div>
+
     </div>
   );
 }

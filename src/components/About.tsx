@@ -5,37 +5,37 @@ import { data } from '../data';
 
 const About: React.FC = () => {
   const stats = [
-    { label: "Month's of Experience", value: "9+" },
-    { label: "Techs", value: "15+" },
-    { label: "CGPA", value: "7.5" },
-    { label: "Main Projects", value: "5+" }
+    { label: "Internships", value: "3" },
+    { label: "Techs", value: "16+" },
+    { label: "CGPA", value: "7.91" },
+    { label: "Main Projects", value: "2" }
   ];
 
   const whatIDo = [
     {
-      title: "Backend Development",
-      description: "Expertise in architecting scalable enterprise systems using Java, Python, and Spring Boot.",
-      icon: Server
-    },
-    {
-      title: "Microservices Architecture",
-      description: "Building resilient microservices systems with RESTful APIs and JWT authentication.",
+      title: "Full Stack Development",
+      description: "Building end-to-end applications with Java, Spring Boot, and React.js, from REST APIs to responsive interfaces.",
       icon: Code2
     },
     {
-      title: "Cloud Infrastructure",
-      description: "Deploying and managing cloud resources on AWS and Docker for high availability.",
+      title: "Secure REST APIs",
+      description: "Designing and testing RESTful services with Spring Security, JWT authentication, and role-based access control.",
+      icon: Server
+    },
+    {
+      title: "UI Design & Testing",
+      description: "Designing usable interfaces in Figma and validating web application workflows with Postman-based API testing.",
       icon: Cloud
     },
     {
-      title: "Database Design",
-      description: "Optimizing data storage and retrieval with PostgreSQL, Neo4j, and Apache Solr.",
+      title: "Database Engineering",
+      description: "Modeling and persisting data with MySQL, PostgreSQL, Hibernate, JPA, and JDBC.",
       icon: Database
     }
   ];
 
   return (
-    <section id="about" className="min-h-screen py-24 bg-white dark:bg-neutral-900 transition-colors duration-500 relative">
+    <section id="about" className="min-h-screen py-24 relative">
       <div className="container mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -48,7 +48,7 @@ const About: React.FC = () => {
             <h2 className="text-4xl lg:text-5xl font-black uppercase tracking-tighter transition-colors">About Me</h2>
           </div>
           <h3 className="text-xl font-bold text-gray-800 dark:text-neutral-300 mb-8 transition-colors">
-            I'm <span className="text-brand transition-colors">Livish Kumar</span>, Backend Software Engineer
+            I'm <span className="text-brand transition-colors">KIRITHIKA R S</span>, {data.personal.role}
           </h3>
           <p className="text-gray-500 dark:text-neutral-400 text-lg leading-relaxed mb-16 transition-colors">
             {data.personal.summary}

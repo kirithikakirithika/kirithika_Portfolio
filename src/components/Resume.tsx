@@ -3,9 +3,19 @@ import { motion } from 'framer-motion';
 import { Briefcase, GraduationCap, Code, Layers } from 'lucide-react';
 import { data } from '../data';
 
+const skillLabels: Record<string, string> = {
+  languages: 'Languages',
+  backend: 'Backend',
+  frontend: 'Frontend',
+  database: 'Database',
+  security: 'Security',
+  uiuxTesting: 'UI/UX & Testing',
+  tools: 'Tools'
+};
+
 const Resume: React.FC = () => {
   return (
-    <section id="resume" className="min-h-screen py-24 bg-gray-50 dark:bg-neutral-900 transition-colors duration-500 overflow-hidden">
+    <section id="resume" className="min-h-screen py-24 overflow-hidden">
       <div className="container mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -32,7 +42,7 @@ const Resume: React.FC = () => {
                 transition={{ duration: 0.5 }}
                 className="relative pl-8 border-l-4 border-brand mb-12"
               >
-                <div className="absolute top-0 -left-[10px] w-4 h-4 rounded-full bg-brand border-4 border-gray-50 dark:border-neutral-900 transition-colors"></div>
+                <div className="absolute top-0 -left-[10px] w-4 h-4 rounded-full bg-brand border-4 border-transparent"></div>
                 <div className="text-xs uppercase font-black text-gray-400 dark:text-neutral-500 mb-2 transition-colors">{exp.period}</div>
                 <h4 className="text-xl font-bold uppercase mb-1 text-black dark:text-white transition-colors">{exp.role}</h4>
                 <div className="text-brand font-bold mb-4 uppercase text-xs">{exp.company}</div>
@@ -59,7 +69,7 @@ const Resume: React.FC = () => {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="relative pl-8 border-l-4 border-brand mb-12"
               >
-                <div className="absolute top-0 -left-[10px] w-4 h-4 rounded-full bg-brand border-4 border-gray-50 dark:border-neutral-900 transition-colors"></div>
+                <div className="absolute top-0 -left-[10px] w-4 h-4 rounded-full bg-brand border-4 border-transparent"></div>
                 <div className="text-xs uppercase font-black text-gray-400 dark:text-neutral-500 mb-2 transition-colors">{edu.period}</div>
                 <h4 className="text-xl font-bold uppercase mb-1 text-black dark:text-white transition-colors">{edu.degree}</h4>
                 <div className="text-brand font-bold mb-4 uppercase text-xs">{edu.school}</div>
@@ -100,7 +110,7 @@ const Resume: React.FC = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-white dark:bg-neutral-800 p-8 border-b-4 border-brand shadow-sm transition-colors duration-500"
               >
-                <h4 className="text-xs uppercase font-black tracking-widest text-brand mb-6">{category.replace(/([A-Z])/g, ' $1').trim()}</h4>
+                <h4 className="text-xs uppercase font-black tracking-widest text-brand mb-6">{skillLabels[category] ?? category}</h4>
                 <div className="flex flex-wrap gap-2">
                   {skills.map((skill, idx) => (
                     <span key={idx} className="px-3 py-1 bg-gray-50 dark:bg-neutral-700 border border-gray-200 dark:border-neutral-600 text-xs font-bold uppercase tracking-tighter text-black dark:text-white hover:bg-black dark:hover:bg-brand dark:hover:text-black hover:text-white transition-colors cursor-default">
@@ -108,6 +118,29 @@ const Resume: React.FC = () => {
                     </span>
                   ))}
                 </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Certifications & Training */}
+        <div className="mt-24">
+          <div className="flex items-center gap-4 mb-12 text-black dark:text-white transition-colors">
+            <Code className="w-5 h-5 lg:w-6 lg:h-6 text-brand" />
+            <h3 className="text-2xl lg:text-3xl font-black uppercase tracking-tighter">Certifications &amp; Training</h3>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {data.certifications.map((cert, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white dark:bg-neutral-800 p-8 border-t-4 border-brand shadow-sm transition-colors duration-500"
+              >
+                <h4 className="text-sm font-black uppercase tracking-tight text-black dark:text-white mb-2 transition-colors">{cert.title}</h4>
+                <div className="text-brand font-bold uppercase text-[10px] tracking-widest mb-4">{cert.issuer}</div>
+                <p className="text-xs leading-relaxed text-gray-500 dark:text-neutral-400 transition-colors">{cert.details}</p>
               </motion.div>
             ))}
           </div>

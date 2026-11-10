@@ -1,11 +1,22 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Database, Layout, Server, ShieldCheck } from 'lucide-react';
+import { ExternalLink, Github, Database, Layout, Server, ShieldCheck, Brain, FlaskConical, BarChart3 } from 'lucide-react';
 import { data } from '../data';
+
+const tagIcons = {
+  Backend: Server,
+  'UI/UX': Layout,
+  Database: Database,
+  Security: ShieldCheck,
+  'Machine Learning': Brain,
+  'Data Prep': BarChart3,
+  'Flask API': FlaskConical,
+  'Model Evaluation': BarChart3
+};
 
 const Portfolio: React.FC = () => {
   return (
-    <section id="portfolio" className="min-h-screen py-24 bg-white dark:bg-neutral-900 transition-colors duration-500 overflow-hidden">
+    <section id="portfolio" className="min-h-screen py-24 overflow-hidden">
       <div className="container mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -35,40 +46,31 @@ const Portfolio: React.FC = () => {
                     </div>
                   </div>
                   <div className="flex gap-4">
-                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="p-2 bg-white dark:bg-neutral-700 rounded-full text-black dark:text-white hover:bg-black dark:hover:bg-brand dark:hover:text-black hover:text-white transition-colors">
-                      <Github className="w-5 h-5" />
-                    </a>
-                    <a href={project.live} target="_blank" rel="noopener noreferrer" className="p-2 bg-white dark:bg-neutral-700 rounded-full text-black dark:text-white hover:bg-black dark:hover:bg-brand dark:hover:text-black hover:text-white transition-colors">
-                      <ExternalLink className="w-5 h-5" />
-                    </a>
+                    {project.github && (
+                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="p-2 bg-white dark:bg-neutral-700 rounded-full text-black dark:text-white hover:bg-black dark:hover:bg-brand dark:hover:text-black hover:text-white transition-colors">
+                        <Github className="w-5 h-5" />
+                      </a>
+                    )}
+                    {project.live && (
+                      <a href={project.live} target="_blank" rel="noopener noreferrer" className="p-2 bg-white dark:bg-neutral-700 rounded-full text-black dark:text-white hover:bg-black dark:hover:bg-brand dark:hover:text-black hover:text-white transition-colors">
+                        <ExternalLink className="w-5 h-5" />
+                      </a>
+                    )}
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="p-4 bg-white dark:bg-neutral-700 flex items-center gap-3 transition-colors">
-                    <div className="p-2 bg-brand/10 text-brand rounded">
-                      <Server className="w-4 h-4" />
-                    </div>
-                    <span className="text-[10px] font-bold uppercase text-gray-500 dark:text-neutral-400">Backend</span>
-                  </div>
-                  <div className="p-4 bg-white dark:bg-neutral-700 flex items-center gap-3 transition-colors">
-                    <div className="p-2 bg-brand/10 text-brand rounded">
-                      <Layout className="w-4 h-4" />
-                    </div>
-                    <span className="text-[10px] font-bold uppercase text-gray-500 dark:text-neutral-400">UI/UX</span>
-                  </div>
-                  <div className="p-4 bg-white dark:bg-neutral-700 flex items-center gap-3 transition-colors">
-                    <div className="p-2 bg-brand/10 text-brand rounded">
-                      <Database className="w-4 h-4" />
-                    </div>
-                    <span className="text-[10px] font-bold uppercase text-gray-500 dark:text-neutral-400">Database</span>
-                  </div>
-                  <div className="p-4 bg-white dark:bg-neutral-700 flex items-center gap-3 transition-colors">
-                    <div className="p-2 bg-brand/10 text-brand rounded">
-                      <ShieldCheck className="w-4 h-4" />
-                    </div>
-                    <span className="text-[10px] font-bold uppercase text-gray-500 dark:text-neutral-400">Security</span>
-                  </div>
+                  {project.tags.map((tag) => {
+                    const Icon = tagIcons[tag as keyof typeof tagIcons] ?? Server;
+                    return (
+                      <div key={tag} className="p-4 bg-white dark:bg-neutral-700 flex items-center gap-3 transition-colors">
+                        <div className="p-2 bg-brand/10 text-brand rounded">
+                          <Icon className="w-4 h-4" />
+                        </div>
+                        <span className="text-[10px] font-bold uppercase text-gray-500 dark:text-neutral-400">{tag}</span>
+                      </div>
+                    );
+                  })}
                 </div>
 
                 <ul className="space-y-3">
